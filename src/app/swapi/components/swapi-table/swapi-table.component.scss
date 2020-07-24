@@ -1,4 +1,8 @@
 table {
   text-align: left;
   width: 100%;
+
+  td, th {
+    padding: 6px;
+  }
 }

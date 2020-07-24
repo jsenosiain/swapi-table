@@ -2,7 +2,7 @@
   <tr>
     <th *ngFor="let column of columns">{{ column }}</th>
   </tr>
-  <tr *ngFor="let datum of data">
+  <tr *ngFor="let datum of data.current">
     <td *ngFor="let column of columns">{{ datum[column] }}</td>
   </tr>
 </table>

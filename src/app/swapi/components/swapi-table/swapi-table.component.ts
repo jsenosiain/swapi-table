@@ -7,7 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SwapiTableComponent implements OnInit {
   @Input() columns: string[];
-  @Input() data: any[];
+  @Input() data: { initial: any[], current: any[] };
 
   constructor() { }
 
