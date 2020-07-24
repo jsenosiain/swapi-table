@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { map, withLatestFrom } from 'rxjs/operators';
 import { Person } from './models/person';
+import { search as searchPeople } from './store/people/people.actions';
 import { SwapiSearchComponent } from './swapi/components/swapi-search/swapi-search.component';
 
 @Component({
@@ -22,6 +22,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    /*
     this.search.search$
     .pipe(
       withLatestFrom(this.people$),
@@ -29,5 +30,10 @@ export class AppComponent implements AfterViewInit {
         .filter(person => JSON.stringify(person).search(search) !== -1)),
     )
     .subscribe(console.log);
+    */
+  }
+
+  searchChanged(search: string): void {
+    this.store.dispatch(searchPeople({ search }));
   }
 }

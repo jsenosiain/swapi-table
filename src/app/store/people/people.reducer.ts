@@ -1,12 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
-import { loaded, sorted } from './people.actions';
+import { loaded, search } from './people.actions';
 
 export const initialState = [];
 
 const reducer = createReducer(
   initialState,
   on(loaded, (state, { people }) => people),
-  on(sorted, (state, payload) => {
+  on(search, (state, payload) => {
 
     console.log('state', state);
     console.log('payload', payload);

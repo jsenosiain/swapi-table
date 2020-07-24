@@ -10,4 +10,5 @@ export interface Sort {
 
 export const load = createAction('[People] Load');
 export const loaded = createAction('[People] Loaded', props<{ people: Person[] }>());
-export const sorted = createAction('[People] Sorted', props<{ sort: Sort[] }>());
+export const search = createAction('[People] Search', props<{ search: string }>())
+export const sort = createAction('[People] Sort', props<Sort>());
