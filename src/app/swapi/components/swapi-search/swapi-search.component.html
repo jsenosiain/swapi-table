@@ -1,0 +1,3 @@
+<label>Search</label>
+<input type="text" [formControl]="searchControl">
+<ng-container *ngIf="search$ | async"></ng-container>

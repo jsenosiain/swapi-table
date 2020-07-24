@@ -1,8 +1,14 @@
 import { HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { Store, StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
+import { load } from './store/people/people.actions';
+import { PeopleEffects } from './store/people/people.effects';
+import { peopleReducer } from './store/people/people.reducer';
 import { SwapiModule } from './swapi/swapi.module';
 
 @NgModule({
@@ -11,11 +17,20 @@ import { SwapiModule } from './swapi/swapi.module';
   ],
   imports: [
     BrowserModule,
+    EffectsModule.forRoot([PeopleEffects]),
     HttpClientModule,
-    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreModule.forRoot({ people: peopleReducer }),
     SwapiModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (store: Store) => () => store.dispatch(load()),
+      multi: true,
+      deps: [Store],
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
