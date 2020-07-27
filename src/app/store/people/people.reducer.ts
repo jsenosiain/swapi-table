@@ -29,18 +29,29 @@ export const initialState = {
 
 const reducer = createReducer(
   initialState,
-  on(loaded, (state, { people }) => ({
-    ...state,
-    initial: people,
-    current: people,
-  })),
-  on(reorder, (state, { current, previous }) => ({
-    ...state,
-    columns: fromTo([...state.columns])(current, previous),
-  })),
+  on(loaded, (state, { people, columns }) => {
+    const column = columns ? columns.find(col => col.sort !== '') : null;
+
+    return {
+      ...state,
+      initial: people,
+      current: column ? [...people].sort(sorts[column.sort](column.name)) : people,
+      columns: columns || state.columns,
+    };
+  }),
+  on(reorder, (state, { current, previous }) => {
+    const columns = fromTo([...state.columns])(current, previous);
+
+    localStorage.setItem('columns', JSON.stringify(columns));
+
+    return {
+      ...state,
+      columns,
+    };
+  }),
   on(search, (state, payload) => ({
     ...state,
-    current: state.initial.filter(person => JSON.stringify(person).search(payload.search) !== -1),
+    current: state.initial.filter(person => JSON.stringify(person).toLowerCase().search(payload.search.toLowerCase()) !== -1),
     columns: state.columns.map(c => ({ ...c, sort: '' })),
   })),
   on(sort, (state, { column }) => {
@@ -65,13 +76,17 @@ const reducer = createReducer(
         break;
     }
 
+    columns = columns.map(c => (c.name !== column.name) ? c : {
+      ...c,
+      sort: column.sort === '' ? 'asc' : column.sort === 'asc' ? 'desc' : '',
+    });
+
+    localStorage.setItem('columns', JSON.stringify(columns));
+
     return {
       ...state,
       current,
-      columns: columns.map(c => (c.name !== column.name) ? c : {
-        ...c,
-        sort: column.sort === '' ? 'asc' : column.sort === 'asc' ? 'desc' : '',
-      }),
+      columns,
     };
   }),
 );

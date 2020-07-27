@@ -14,7 +14,3 @@
     <td *ngFor="let column of dataSource.columns">{{ datum[column.name] }}</td>
   </tr>
 </table>
-
-<div cdkDropList cdkDropListOrientation="horizontal" class="example-list">
-  <div class="example-box" *ngFor="let timePeriod of timePeriods" cdkDrag>{{timePeriod}}</div>
-</div>

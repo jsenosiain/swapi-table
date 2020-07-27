@@ -1,0 +1,18 @@
+label {
+  color: rgba(0, 0, 0, 0.54);
+  font-size: 1.4em;
+  padding: 6px;
+}
+
+input {
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-width: 1px;
+  color: rgba(0,0,0,0.75);
+  font-size: 1.4em;
+
+  &:focus {
+    outline: none;
+  }
+}

@@ -10,7 +10,11 @@ export class PeopleEffects {
     ofType('[People] Load'),
     mergeMap(() => this.swapi.getPeople()
       .pipe(
-        map(people => ({ type: '[People] Loaded', people })),
+        map(people => ({
+          type: '[People] Loaded',
+          people,
+          columns: JSON.parse(localStorage.getItem('columns')),
+        })),
         catchError(() => EMPTY),
       )
     ),
