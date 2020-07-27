@@ -1,20 +1,20 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Person } from './models/person';
-import { search as searchPeople } from './store/people/people.actions';
+import { search as searchPeople, sort as sortPeople } from './store/people/people.actions';
+import { SwapiColumn } from './swapi/components/swapi-table/swapi-table.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
-  columns: string[];
+export class AppComponent {
+  columns: any[];
   people$: Observable<Person[]>;
 
   constructor(private store: Store<{ people: Person[] }>) {
-    this.columns = ['name', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color', 'birth_year', 'gender'];
     this.people$ = this.store.pipe(select('people'));
 
     // this.people$.subscribe(console.log);
@@ -22,5 +22,9 @@ export class AppComponent implements AfterViewInit {
 
   searchChanged(search: string): void {
     this.store.dispatch(searchPeople({ search }));
+  }
+
+  sortChanged(column: SwapiColumn): void {
+    this.store.dispatch(sortPeople({ column }));
   }
 }

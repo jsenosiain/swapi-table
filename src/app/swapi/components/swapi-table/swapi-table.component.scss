@@ -2,7 +2,19 @@ table {
   text-align: left;
   width: 100%;
 
-  td, th {
+  td,
+  th {
     padding: 6px;
   }
+
+  th {
+		div {
+      cursor: pointer;
+			display: flex;
+
+			span {
+				width: 100%;
+			}
+		}
+	}
 }

@@ -1,9 +1,17 @@
 <table>
   <tr>
-    <th *ngFor="let column of columns">{{ column }}</th>
+    <th *ngFor="let column of dataSource.columns">
+      <div (click)="sort(column)">
+        <span>{{ column.name }}</span>
+        <ng-container [ngSwitch]="column.sort">
+          <i *ngSwitchCase="'asc'" class="fas fa-angle-up"></i>
+          <i *ngSwitchCase="'desc'" class="fas fa-angle-down"></i>
+        </ng-container>
+      </div>
+    </th>
   </tr>
-  <tr *ngFor="let datum of data.current">
-    <td *ngFor="let column of columns">{{ datum[column] }}</td>
+  <tr *ngFor="let datum of dataSource.current">
+    <td *ngFor="let column of dataSource.columns">{{ datum[column.name] }}</td>
   </tr>
 </table>
 

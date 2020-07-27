@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -18,10 +19,14 @@ import { SwapiModule } from './swapi/swapi.module';
   imports: [
     BrowserModule,
     EffectsModule.forRoot([PeopleEffects]),
+    FontAwesomeModule,
     HttpClientModule,
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-    StoreModule.forRoot({ people: peopleReducer }),
+    StoreModule.forRoot({
+      people: peopleReducer,
+    }),
     SwapiModule,
+
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     {

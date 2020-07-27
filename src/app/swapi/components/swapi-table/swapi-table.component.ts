@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
+export type SwapiSortDirection = 'asc' | 'desc' | '';
+
+export interface SwapiColumn {
+  name: string;
+  sort: SwapiSortDirection;
+}
 
 @Component({
   selector: 'app-swapi-table',
@@ -6,11 +13,17 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./swapi-table.component.scss']
 })
 export class SwapiTableComponent implements OnInit {
-  @Input() columns: string[];
-  @Input() data: { initial: any[], current: any[] };
+  @Input() dataSource: { initial: any[], current: any[], columns: SwapiColumn[] };
 
-  constructor() { }
+  @Output() sortChanged: EventEmitter<SwapiColumn>;
+
+  constructor() {
+    this.sortChanged = new EventEmitter();
+  }
 
   ngOnInit(): void {}
 
+  sort(column: SwapiColumn): void {
+    this.sortChanged.emit(column);
+  }
 }

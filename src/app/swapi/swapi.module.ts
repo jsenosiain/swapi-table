@@ -6,16 +6,16 @@ import { SwapiTableComponent } from './components/swapi-table/swapi-table.compon
 
 @NgModule({
   declarations: [
-    SwapiTableComponent,
     SwapiSearchComponent,
+    SwapiTableComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
   ],
   exports: [
-    SwapiTableComponent,
     SwapiSearchComponent,
+    SwapiTableComponent,
   ],
 })
 export class SwapiModule { }
