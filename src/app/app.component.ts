@@ -16,8 +16,6 @@ export class AppComponent {
 
   constructor(private store: Store<{ people: Person[] }>) {
     this.people$ = this.store.pipe(select('people'));
-
-    // this.people$.subscribe(console.log);
   }
 
   searchChanged(search: string): void {

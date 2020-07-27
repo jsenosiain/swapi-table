@@ -1,10 +1,14 @@
 import { createReducer, on } from '@ngrx/store';
 import { loaded, search, sort } from './people.actions';
 
+const sorts = {
+  asc: c => (a, b) => a[c] < b[c] ? -1 : a[c] > b[c] ? 1 : 0,
+  desc: c => (b, a) => a[c] < b[c] ? -1 : a[c] > b[c] ? 1 : 0,
+};
+
 export const initialState = {
   initial: [],
   current: [],
-
   columns: [
     { name: 'name', sort: '' },
     { name: 'height', sort: '' },
@@ -17,25 +21,17 @@ export const initialState = {
   ],
 };
 
-const sorts = {
-  asc: c => (a, b) => a[c] < b[c] ? -1 : a[c] > b[c] ? 1 : 0,
-  desc: c => (b, a) => a[c] < b[c] ? -1 : a[c] > b[c] ? 1 : 0,
-};
-
 const reducer = createReducer(
   initialState,
-  on(loaded, (state, { people }) => {
-    // load from cache and do appropriate actions if necessary
-    // console.log('state', state);
-    return {
-      ...state,
-      initial: people,
-      current: people,
-    };
-  }),
+  on(loaded, (state, { people }) => ({
+    ...state,
+    initial: people,
+    current: people,
+  })),
   on(search, (state, payload) => ({
     ...state,
-    current: state.current.filter(person => JSON.stringify(person).search(payload.search) !== -1),
+    current: state.initial.filter(person => JSON.stringify(person).search(payload.search) !== -1),
+    columns: state.columns.map(c => ({ ...c, sort: '' })),
   })),
   on(sort, (state, { column }) => {
     let columns = [...state.columns];

@@ -2,7 +2,7 @@
   <tr>
     <th *ngFor="let column of dataSource.columns">
       <div (click)="sort(column)">
-        <span>{{ column.name }}</span>
+        <span>{{ column.name | snakeToRaw }}</span>
         <ng-container [ngSwitch]="column.sort">
           <i *ngSwitchCase="'asc'" class="fas fa-angle-up"></i>
           <i *ngSwitchCase="'desc'" class="fas fa-angle-down"></i>
