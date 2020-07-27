@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,6 +15,7 @@ import { SnakeToRawPipe } from './pipes/snake-to-raw.pipe';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    DragDropModule,
   ],
   exports: [
     SwapiSearchComponent,

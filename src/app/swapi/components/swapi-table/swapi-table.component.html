@@ -1,6 +1,6 @@
 <table>
-  <tr>
-    <th *ngFor="let column of dataSource.columns">
+  <tr cdkDropList cdkDropListOrientation="horizontal" (cdkDropListDropped)="drop($event)">
+    <th *ngFor="let column of dataSource.columns" cdkDrag>
       <div (click)="sort(column)">
         <span>{{ column.name | snakeToRaw }}</span>
         <ng-container [ngSwitch]="column.sort">
@@ -15,3 +15,6 @@
   </tr>
 </table>
 
+<div cdkDropList cdkDropListOrientation="horizontal" class="example-list">
+  <div class="example-box" *ngFor="let timePeriod of timePeriods" cdkDrag>{{timePeriod}}</div>
+</div>

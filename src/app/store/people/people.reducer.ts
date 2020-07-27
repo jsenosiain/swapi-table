@@ -1,5 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { loaded, search, sort } from './people.actions';
+import { loaded, reorder, search, sort } from './people.actions';
+
+const fromTo = arr => (from, to) => {
+  arr.splice(to, 0, arr.splice(from, 1)[0]);
+
+  return arr;
+};
 
 const sorts = {
   asc: c => (a, b) => a[c] < b[c] ? -1 : a[c] > b[c] ? 1 : 0,
@@ -27,6 +33,10 @@ const reducer = createReducer(
     ...state,
     initial: people,
     current: people,
+  })),
+  on(reorder, (state, { current, previous }) => ({
+    ...state,
+    columns: fromTo([...state.columns])(current, previous),
   })),
   on(search, (state, payload) => ({
     ...state,

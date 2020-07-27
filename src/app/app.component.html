@@ -1,2 +1,6 @@
 <app-swapi-search (searchChanged)="searchChanged($event)"></app-swapi-search>
-<app-swapi-table [dataSource]="people$ | async" (sortChanged)="sortChanged($event)"></app-swapi-table>
+<app-swapi-table
+  [dataSource]="people$ | async"
+  (columnChanged)="columnChanged($event)"
+  (sortChanged)="sortChanged($event)"
+></app-swapi-table>
