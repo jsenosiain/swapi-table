@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { debounceTime, tap } from 'rxjs/operators';
@@ -8,7 +8,9 @@ import { debounceTime, tap } from 'rxjs/operators';
   templateUrl: './swapi-search.component.html',
   styleUrls: ['./swapi-search.component.scss']
 })
-export class SwapiSearchComponent implements OnInit {
+export class SwapiSearchComponent implements OnInit, OnChanges {
+  @Input() term: string;
+
   @Output() searchChanged: EventEmitter<string>;
 
   searchControl: FormControl;
@@ -26,5 +28,9 @@ export class SwapiSearchComponent implements OnInit {
       debounceTime(250),
       tap(search => this.searchChanged.emit(search)),
     );
+  }
+
+  ngOnChanges(): void {
+    this.searchControl.setValue(this.term, { emitEvent: false });
   }
 }

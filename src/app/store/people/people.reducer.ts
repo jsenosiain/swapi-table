@@ -1,8 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
-import { loaded, page, reorder, search, sort } from './people.actions';
+import { loaded, page as pagePeople, reorder, search as searchPeople, sort } from './people.actions';
 
-const fromTo = arr => (from, to) => {
-  arr.splice(to, 0, arr.splice(from, 1)[0]);
+const fromTo = (columns: any[]) => (from: number, to: number) => {
+  const arr = [...columns];
+
+  arr.splice(from, 0, arr.splice(to, 1)[0]);
 
   return arr;
 };
@@ -22,7 +24,7 @@ export const initialState = {
     { name: 'hair_color', sort: '' },
     { name: 'skin_color', sort: '' },
     { name: 'eye_color', sort: '' },
-    { name: 'birth_year', sort: '' },
+    { name: 'age', sort: '' },
     { name: 'gender', sort: '' }
   ],
   search: '',
@@ -36,26 +38,27 @@ export const initialState = {
 
 const reducer = createReducer(
   initialState,
-
   on(loaded, (state, { people, columns }) => {
+    const page = JSON.parse(localStorage.getItem('page')) || state.page;
+    const search = localStorage.getItem('search') || state.search;
     const column = columns ? columns.find(col => col.sort !== '') : null;
+    const current = (column ? [...people].sort(sorts[column.sort](column.name)) : [...people])
+      .filter(person => JSON.stringify(person).toLowerCase().search(search) !== -1);
 
     return {
       ...state,
       initial: people,
-      current: column ? [...people].sort(sorts[column.sort](column.name)).splice(0, 10) : [...people].splice(0, 10),
+      current: [...current].splice((page.pageIndex * 10), 10),
       columns: columns || state.columns,
+      search,
       page: {
-        length: people.length,
-        pageIndex: 0,
-        pageSize: 10,
-        previousPageIndex: 0,
+        ...page,
+        length: current.length
       },
     };
   }),
-
   on(reorder, (state, { current, previous }) => {
-    const columns = fromTo([...state.columns])(current, previous);
+    const columns = fromTo(state.columns)(current, previous);
 
     localStorage.setItem('columns', JSON.stringify(columns));
 
@@ -64,13 +67,12 @@ const reducer = createReducer(
       columns,
     };
   }),
-
-  on(page, (state, payload) => {
+  on(pagePeople, (state, payload) => {
     const column = state.columns.find(c => c.sort !== '');
-    let current = column ? [...state.initial].sort(sorts[column.sort](column.name)) : state.initial;
-    current = current.filter(person => JSON.stringify(person).toLowerCase().search(state.search) !== -1);
+    const current = (column ? [...state.initial].sort(sorts[column.sort](column.name)) : state.initial)
+      .filter(person => JSON.stringify(person).toLowerCase().search(state.search) !== -1);
 
-    localStorage.setItem('page', JSON.stringify(payload.page).toLowerCase());
+    localStorage.setItem('page', JSON.stringify(payload.page));
 
     return {
       ...state,
@@ -78,31 +80,36 @@ const reducer = createReducer(
       page: payload.page,
     };
   }),
-  on(search, (state, payload) => {
+  on(searchPeople, (state, payload) => {
     const column = state.columns.find(c => c.sort !== '');
-    let current = column ? [...state.initial].sort(sorts[column.sort](column.name)) : state.initial;
-    current = current.filter(person => JSON.stringify(person).toLowerCase().search(payload.search.toLowerCase()) !== -1);
+    const current = (column ? [...state.initial].sort(sorts[column.sort](column.name)) : state.initial)
+      .filter(person => JSON.stringify(person).toLowerCase().search(payload.search.toLowerCase()) !== -1);
+
+    const page = {
+      ...state.page,
+      length: current.length,
+      pageIndex: 0,
+    };
 
     localStorage.setItem('search', payload.search.toLowerCase());
+    localStorage.setItem('page', JSON.stringify(page));
 
     return {
       ...state,
-      current: [...current].splice((state.page.pageIndex * 10), 10),
+      current: [...current].splice(0, 10),
       search: payload.search.toLowerCase(),
-      page: {
-        ...state.page,
-        length: current.length,
-      }
+      page,
     };
   }),
   on(sort, (state, { column }) => {
-    let columns = [...state.columns];
-    let current = [...state.initial];
+    const columns = [...state.columns].map(c => (c.name !== column.name) ?
+      { ...c, sort: '' } :
+      { ...c, sort: column.sort === '' ? 'asc' : column.sort === 'asc' ? 'desc' : '' }
+    );
 
-    const currentSort = columns.find(c => c.sort !== '');
-    if (currentSort && currentSort.name !== column.name) {
-      columns = columns.map(c => ({ ...c, sort: '' }));
-    }
+    localStorage.setItem('columns', JSON.stringify(columns));
+
+    let current = [...state.initial];
 
     switch (column.sort) {
       case '':
@@ -111,23 +118,15 @@ const reducer = createReducer(
       case 'asc':
         current.sort(sorts.desc(column.name));
         break;
-      case 'desc':
-        current = state.initial;
-        break;
     }
 
-    current = current.filter(person => JSON.stringify(person).toLowerCase().search(state.search.toLowerCase()) !== -1);
-
-    columns = columns.map(c => (c.name !== column.name) ? c : {
-      ...c,
-      sort: column.sort === '' ? 'asc' : column.sort === 'asc' ? 'desc' : '',
-    });
-
-    localStorage.setItem('columns', JSON.stringify(columns));
+    current = current
+      .filter(person => JSON.stringify(person).toLowerCase().search(state.search) !== -1)
+      .splice((state.page.pageIndex * 10), 10);
 
     return {
       ...state,
-      current: [...current].splice((state.page.pageIndex * 10), 10),
+      current,
       columns,
     };
   }),

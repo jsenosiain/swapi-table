@@ -8,28 +8,28 @@ export const People: Person[] = [
     hair_color: 'blond',
     skin_color: 'fair',
     eye_color: 'blue',
-    birth_year: '19BBY',
+    age: 19,
     gender: 'male',
   },
   {
     name: 'C-3PO',
     height: 167,
     mass: 75,
-    hair_color: 'n/a',
+    hair_color: null,
     skin_color: 'gold',
     eye_color: 'yellow',
-    birth_year: '112BBY',
-    gender: 'n/a',
+    age: 112,
+    gender: null,
   },
   {
     name: 'R2-D2',
     height: 96,
     mass: 32,
-    hair_color: 'n/a',
+    hair_color: null,
     skin_color: 'white, blue',
     eye_color: 'red',
-    birth_year: '33BBY',
-    gender: 'n/a',
+    age: 33,
+    gender: null,
   },
   {
     name: 'Darth Vader',
@@ -38,7 +38,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'white',
     eye_color: 'yellow',
-    birth_year: '41.9BBY',
+    age: 41.9,
     gender: 'male',
   },
   {
@@ -48,7 +48,7 @@ export const People: Person[] = [
     hair_color: 'brown',
     skin_color: 'light',
     eye_color: 'brown',
-    birth_year: '19BBY',
+    age: 19,
     gender: 'female',
   },
   {
@@ -58,7 +58,7 @@ export const People: Person[] = [
     hair_color: 'brown, grey',
     skin_color: 'light',
     eye_color: 'blue',
-    birth_year: '52BBY',
+    age: 52,
     gender: 'male',
   },
   {
@@ -68,18 +68,18 @@ export const People: Person[] = [
     hair_color: 'brown',
     skin_color: 'light',
     eye_color: 'blue',
-    birth_year: '47BBY',
+    age: 47,
     gender: 'female',
   },
   {
     name: 'R5-D4',
     height: 97,
     mass: 32,
-    hair_color: 'n/a',
+    hair_color: null,
     skin_color: 'white, red',
     eye_color: 'red',
-    birth_year: 'unknown',
-    gender: 'n/a',
+    age: null,
+    gender: null,
   },
   {
     name: 'Biggs Darklighter',
@@ -88,7 +88,7 @@ export const People: Person[] = [
     hair_color: 'black',
     skin_color: 'light',
     eye_color: 'brown',
-    birth_year: '24BBY',
+    age: 24,
     gender: 'male',
   },
   {
@@ -98,7 +98,7 @@ export const People: Person[] = [
     hair_color: 'auburn, white',
     skin_color: 'fair',
     eye_color: 'blue-gray',
-    birth_year: '57BBY',
+    age: 57,
     gender: 'male',
   },
   {
@@ -108,7 +108,7 @@ export const People: Person[] = [
     hair_color: 'blond',
     skin_color: 'fair',
     eye_color: 'blue',
-    birth_year: '41.9BBY',
+    age: 41.9,
     gender: 'male',
   },
   {
@@ -118,7 +118,7 @@ export const People: Person[] = [
       hair_color: 'auburn, grey',
       skin_color: 'fair',
       eye_color: 'blue',
-      birth_year: '64BBY',
+      age: 64,
       gender: 'male',
   },
   {
@@ -126,9 +126,9 @@ export const People: Person[] = [
       height: 228,
       mass: 112,
       hair_color: 'brown',
-      skin_color: 'unknown',
+      skin_color: null,
       eye_color: 'blue',
-      birth_year: '200BBY',
+      age: 200,
       gender: 'male',
   },
   {
@@ -138,27 +138,27 @@ export const People: Person[] = [
       hair_color: 'brown',
       skin_color: 'fair',
       eye_color: 'brown',
-      birth_year: '29BBY',
+      age: 29,
       gender: 'male',
   },
   {
       name: 'Greedo',
       height: 173,
       mass: 74,
-      hair_color: 'n/a',
+      hair_color: null,
       skin_color: 'green',
       eye_color: 'black',
-      birth_year: '44BBY',
+      age: 44,
       gender: 'male',
   },
   {
       name: 'Jabba Desilijic Tiure',
       height: 175,
       mass: 1358,
-      hair_color: 'n/a',
+      hair_color: null,
       skin_color: 'green-tan, brown',
       eye_color: 'orange',
-      birth_year: '600BBY',
+      age: 600,
       gender: 'hermaphrodite',
   },
   {
@@ -168,7 +168,7 @@ export const People: Person[] = [
       hair_color: 'brown',
       skin_color: 'fair',
       eye_color: 'hazel',
-      birth_year: '21BBY',
+      age: 21,
       gender: 'male',
   },
   {
@@ -178,7 +178,7 @@ export const People: Person[] = [
       hair_color: 'brown',
       skin_color: 'fair',
       eye_color: 'blue',
-      birth_year: 'unknown',
+      age: null,
       gender: 'male',
   },
   {
@@ -188,7 +188,7 @@ export const People: Person[] = [
       hair_color: 'white',
       skin_color: 'green',
       eye_color: 'brown',
-      birth_year: '896BBY',
+      age: 896,
       gender: 'male',
   },
   {
@@ -198,7 +198,7 @@ export const People: Person[] = [
     hair_color: 'grey',
     skin_color: 'pale',
     eye_color: 'yellow',
-    birth_year: '82BBY',
+    age: 82,
     gender: 'male',
   },
   {
@@ -208,7 +208,7 @@ export const People: Person[] = [
     hair_color: 'black',
     skin_color: 'fair',
     eye_color: 'brown',
-    birth_year: '31.5BBY',
+    age: 31.5,
     gender: 'male',
   },
   {
@@ -218,7 +218,7 @@ export const People: Person[] = [
       hair_color: 'none',
       skin_color: 'metal',
       eye_color: 'red',
-      birth_year: '15BBY',
+      age: 15,
       gender: 'none',
   },
   {
@@ -228,7 +228,7 @@ export const People: Person[] = [
       hair_color: 'none',
       skin_color: 'green',
       eye_color: 'red',
-      birth_year: '53BBY',
+      age: 53,
       gender: 'male',
   },
   {
@@ -238,7 +238,7 @@ export const People: Person[] = [
       hair_color: 'black',
       skin_color: 'dark',
       eye_color: 'brown',
-      birth_year: '31BBY',
+      age: 31,
       gender: 'male',
   },
   {
@@ -248,7 +248,7 @@ export const People: Person[] = [
       hair_color: 'none',
       skin_color: 'light',
       eye_color: 'blue',
-      birth_year: '37BBY',
+      age: 37,
       gender: 'male',
   },
   {
@@ -258,7 +258,7 @@ export const People: Person[] = [
       hair_color: 'none',
       skin_color: 'brown mottle',
       eye_color: 'orange',
-      birth_year: '41BBY',
+      age: 41,
       gender: 'male',
   },
   {
@@ -268,7 +268,7 @@ export const People: Person[] = [
       hair_color: 'auburn',
       skin_color: 'fair',
       eye_color: 'blue',
-      birth_year: '48BBY',
+      age: 48,
       gender: 'female',
   },
   {
@@ -278,7 +278,7 @@ export const People: Person[] = [
       hair_color: 'brown',
       skin_color: 'fair',
       eye_color: 'brown',
-      birth_year: 'unknown',
+      age: null,
       gender: 'male',
   },
   {
@@ -288,7 +288,7 @@ export const People: Person[] = [
       hair_color: 'brown',
       skin_color: 'brown',
       eye_color: 'brown',
-      birth_year: '8BBY',
+      age: 8,
       gender: 'male',
   },
   {
@@ -298,7 +298,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'grey',
     eye_color: 'black',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -308,7 +308,7 @@ export const People: Person[] = [
     hair_color: 'brown',
     skin_color: 'fair',
     eye_color: 'blue',
-    birth_year: '92BBY',
+    age: 92,
     gender: 'male',
   },
   {
@@ -318,7 +318,7 @@ export const People: Person[] = [
       hair_color: 'none',
       skin_color: 'mottled green',
       eye_color: 'red',
-      birth_year: 'unknown',
+      age: null,
       gender: 'male',
   },
   {
@@ -328,7 +328,7 @@ export const People: Person[] = [
       hair_color: 'blond',
       skin_color: 'fair',
       eye_color: 'blue',
-      birth_year: '91BBY',
+      age: 91,
       gender: 'male',
   },
   {
@@ -338,7 +338,7 @@ export const People: Person[] = [
       hair_color: 'brown',
       skin_color: 'light',
       eye_color: 'brown',
-      birth_year: '46BBY',
+      age: 46,
       gender: 'female',
   },
   {
@@ -348,7 +348,7 @@ export const People: Person[] = [
       hair_color: 'none',
       skin_color: 'orange',
       eye_color: 'orange',
-      birth_year: '52BBY',
+      age: 52,
       gender: 'male',
   },
   {
@@ -358,7 +358,7 @@ export const People: Person[] = [
       hair_color: 'none',
       skin_color: 'grey',
       eye_color: 'orange',
-      birth_year: 'unknown',
+      age: null,
       gender: 'male',
   },
   {
@@ -368,7 +368,7 @@ export const People: Person[] = [
       hair_color: 'none',
       skin_color: 'green',
       eye_color: 'orange',
-      birth_year: 'unknown',
+      age: null,
       gender: 'male',
   },
   {
@@ -378,7 +378,7 @@ export const People: Person[] = [
       hair_color: 'brown',
       skin_color: 'fair',
       eye_color: 'blue',
-      birth_year: 'unknown',
+      age: null,
       gender: 'male',
   },
   {
@@ -388,7 +388,7 @@ export const People: Person[] = [
       hair_color: 'black',
       skin_color: 'blue, grey',
       eye_color: 'yellow',
-      birth_year: 'unknown',
+      age: null,
       gender: 'male',
   },
   {
@@ -398,7 +398,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'grey, red',
     eye_color: 'orange',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
 
@@ -409,7 +409,7 @@ export const People: Person[] = [
     hair_color: 'black',
     skin_color: 'dark',
     eye_color: 'brown',
-    birth_year: '62BBY',
+    age: 62,
     gender: 'male',
   },
   {
@@ -419,7 +419,7 @@ export const People: Person[] = [
       hair_color: 'black',
       skin_color: 'fair',
       eye_color: 'brown',
-      birth_year: '72BBY',
+      age: 72,
       gender: 'female',
   },
   {
@@ -429,7 +429,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'red',
     eye_color: 'yellow',
-    birth_year: '54BBY',
+    age: 54,
     gender: 'male',
   },
   {
@@ -439,7 +439,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'pale',
     eye_color: 'pink',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -449,7 +449,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'blue',
     eye_color: 'hazel',
-    birth_year: '48BBY',
+    age: 48,
     gender: 'female',
   },
   {
@@ -458,8 +458,8 @@ export const People: Person[] = [
     mass: 15,
     hair_color: 'none',
     skin_color: 'grey, blue',
-    eye_color: 'unknown',
-    birth_year: 'unknown',
+    eye_color: null,
+    age: null,
     gender: 'male',
   },
   {
@@ -469,7 +469,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'blue, grey',
     eye_color: 'yellow',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -479,7 +479,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'white, blue',
     eye_color: 'black',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -489,7 +489,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'grey, green, yellow',
     eye_color: 'orange',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -499,7 +499,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'dark',
     eye_color: 'brown',
-    birth_year: '72BBY',
+    age: 72,
     gender: 'male',
   },
 
@@ -510,7 +510,7 @@ export const People: Person[] = [
     hair_color: 'white',
     skin_color: 'pale',
     eye_color: 'yellow',
-    birth_year: '92BBY',
+    age: 92,
     gender: 'male',
   },
   {
@@ -520,7 +520,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'green',
     eye_color: 'black',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -530,7 +530,7 @@ export const People: Person[] = [
     hair_color: 'black',
     skin_color: 'brown',
     eye_color: 'brown',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -540,7 +540,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'dark',
     eye_color: 'blue',
-    birth_year: 'unknown',
+    age: null,
     gender: 'female',
   },
   {
@@ -550,7 +550,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'pale',
     eye_color: 'orange',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -560,7 +560,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'white',
     eye_color: 'yellow',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -570,7 +570,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'orange',
     eye_color: 'black',
-    birth_year: '22BBY',
+    age: 22,
     gender: 'male',
   },
   {
@@ -580,7 +580,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'blue',
     eye_color: 'blue',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -590,7 +590,7 @@ export const People: Person[] = [
     hair_color: 'black',
     skin_color: 'dark',
     eye_color: 'brown',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -600,7 +600,7 @@ export const People: Person[] = [
     hair_color: 'brown',
     skin_color: 'light',
     eye_color: 'brown',
-    birth_year: 'unknown',
+    age: null,
     gender: 'female',
   },
 
@@ -611,7 +611,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'grey',
     eye_color: 'black',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -621,7 +621,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'grey',
     eye_color: 'black',
-    birth_year: 'unknown',
+    age: null,
     gender: 'female',
   },
   {
@@ -631,7 +631,7 @@ export const People: Person[] = [
     hair_color: 'white',
     skin_color: 'fair',
     eye_color: 'blue',
-    birth_year: 'unknown',
+    age: null,
     gender: 'female',
   },
   {
@@ -641,7 +641,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'silver, red',
     eye_color: 'red, blue',
-    birth_year: 'unknown',
+    age: null,
     gender: 'female',
   },
   {
@@ -650,8 +650,8 @@ export const People: Person[] = [
     mass: 48,
     hair_color: 'none',
     skin_color: 'green, grey',
-    eye_color: 'unknown',
-    birth_year: 'unknown',
+    eye_color: null,
+    age: null,
     gender: 'male',
   },
   {
@@ -661,7 +661,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'grey',
     eye_color: 'gold',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -671,7 +671,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'red, blue, white',
     eye_color: 'black',
-    birth_year: 'unknown',
+    age: null,
     gender: 'female',
   },
   {
@@ -681,7 +681,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'brown, white',
     eye_color: 'green, yellow',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -691,7 +691,7 @@ export const People: Person[] = [
     hair_color: 'brown',
     skin_color: 'brown',
     eye_color: 'blue',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
   {
@@ -701,7 +701,7 @@ export const People: Person[] = [
     hair_color: 'brown',
     skin_color: 'light',
     eye_color: 'brown',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   },
 
@@ -712,7 +712,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'pale',
     eye_color: 'white',
-    birth_year: 'unknown',
+    age: null,
     gender: 'female',
   },
   {
@@ -722,7 +722,7 @@ export const People: Person[] = [
     hair_color: 'none',
     skin_color: 'grey',
     eye_color: 'black',
-    birth_year: 'unknown',
+    age: null,
     gender: 'male',
   }
 ];

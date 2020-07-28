@@ -1,8 +1,8 @@
-<div class="search">
-  <app-swapi-search (searchChanged)="searchChanged($event)"></app-swapi-search>
-</div>
-<div class="content">
-  <ng-container *ngIf="people$ | async as people">
+<ng-container *ngIf="people$ | async as people">
+  <div class="search">
+    <app-swapi-search [term]="people.search" (searchChanged)="searchChanged($event)"></app-swapi-search>
+  </div>
+  <div class="content">
     <app-swapi-table
       [dataSource]="people"
       (columnChanged)="columnChanged($event)"
@@ -11,8 +11,9 @@
     <mat-paginator
       [hidePageSize]="true"
       [length]="people.page.length"
-      [pageSize]="10"
+      [pageIndex]="people.page.pageIndex"
+      [pageSize]="people.page.pageSize"
       (page)="pageChanged($event)"
     ></mat-paginator>
-  </ng-container>
-</div>
+  </div>
+</ng-container>

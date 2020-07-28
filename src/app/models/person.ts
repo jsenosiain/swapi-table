@@ -5,6 +5,6 @@ export interface Person {
   hair_color: string;
   skin_color: string;
   eye_color: string;
-  birth_year: string;
+  age: number;
   gender: string;
 }

@@ -14,7 +14,7 @@ export interface SwapiColumn {
   styleUrls: ['./swapi-table.component.scss']
 })
 export class SwapiTableComponent {
-  @Input() dataSource: { initial: any[], current: any[], columns: SwapiColumn[] };
+  @Input() dataSource: any;
 
   @Output() columnChanged: EventEmitter<CdkDragDrop<string[]>>;
   @Output() sortChanged: EventEmitter<SwapiColumn>;
