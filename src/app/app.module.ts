@@ -1,6 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EffectsModule } from '@ngrx/effects';
 import { Store, StoreModule } from '@ngrx/store';
@@ -17,10 +19,12 @@ import { SwapiModule } from './swapi/swapi.module';
     AppComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     EffectsModule.forRoot([PeopleEffects]),
     FontAwesomeModule,
     HttpClientModule,
+    MatPaginatorModule,
     StoreModule.forRoot({
       people: peopleReducer,
     }),
