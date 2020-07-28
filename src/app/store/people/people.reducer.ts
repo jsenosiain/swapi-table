@@ -25,6 +25,7 @@ export const initialState = {
     { name: 'birth_year', sort: '' },
     { name: 'gender', sort: '' }
   ],
+  search: '',
 };
 
 const reducer = createReducer(
@@ -39,6 +40,7 @@ const reducer = createReducer(
       columns: columns || state.columns,
     };
   }),
+
   on(reorder, (state, { current, previous }) => {
     const columns = fromTo([...state.columns])(current, previous);
 
@@ -49,11 +51,17 @@ const reducer = createReducer(
       columns,
     };
   }),
-  on(search, (state, payload) => ({
-    ...state,
-    current: state.initial.filter(person => JSON.stringify(person).toLowerCase().search(payload.search.toLowerCase()) !== -1),
-    columns: state.columns.map(c => ({ ...c, sort: '' })),
-  })),
+
+  on(search, (state, payload) => {
+    const column = state.columns.find(c => c.sort !== '');
+    const current = column ? [...state.initial].sort(sorts[column.sort](column.name)) : state.initial;
+
+    return {
+      ...state,
+      current: current.filter(person => JSON.stringify(person).toLowerCase().search(payload.search.toLowerCase()) !== -1),
+      search: payload.search.toLowerCase(),
+    };
+  }),
   on(sort, (state, { column }) => {
     let columns = [...state.columns];
     let current = [...state.current];
@@ -72,7 +80,9 @@ const reducer = createReducer(
         current.sort(sorts.desc(column.name));
         break;
       case 'desc':
-        current = state.initial;
+        current = state.search ?
+          state.initial.filter(person => JSON.stringify(person).toLowerCase().search(state.search.toLowerCase()) !== -1) :
+          state.initial;
         break;
     }
 
